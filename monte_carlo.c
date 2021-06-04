@@ -2,10 +2,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include<time.h>
 
 float mc_pi(int);
 
 float frandom() {
+  //srand(time(NULL));
   long int q = random();
   float ret = (float)q/(float)RAND_MAX;
   return ret;
@@ -17,7 +19,7 @@ int main(void) {
   
   pi0 = mc_pi(25000);
   pi1 = mc_pi(25000);
-  printf("%f %f\n", pi0, pi1);
+ // printf("%f %f\n", pi0, pi1);
   
   if (pi0 == pi1) {
       printf("Two separate estimates of pi are exactly the same. This is unlikely.\n");
@@ -38,7 +40,42 @@ int main(void) {
     }
   }
 }
-float mc_pi(int j)
+/*float mc_pi(int n){
+int i,pt_circle_in,pt_circle_out,pt_sq;
+
+for(i=0;i<=n;i++){
+pt_circle_in=0;
+pt_circle_out=0;
+
+float t;
+float x= frandom();
+float y= frandom();
+printf("%f\t%f\t",x,y);
+t=(pow(x,2)+pow(y,2));
+  if(t<=1)
+  pt_circle_in++;
+  else pt_circle_out++;
+    }
+  pt_sq=pt_circle_in + pt_circle_out;
+  float (pi)=(pt_circle_in)/(pt_sq);
+  pi*=4;
+  printf("\n%f",pi);
+  printf("\n");
+  return pi;
+ }
+float mc_pi(int n){
+   int circ=0;
+   for(int i=0;i<n;i++){
+     float x=frandom();
+     float y=frandom();
+     float z=(pow(x,2)+pow(y,2));
+       if(z<=1){
+       circ++;}
+     }
+     float pi= (4*circ)/n;
+     return pi;   
+   }*/
+   float mc_pi(int j)
 {
   int c_points=0;
   float pi=1;
@@ -60,9 +97,3 @@ float mc_pi(int j)
     }
   return pi;
 }
-     float pi= (4*circ)/n;
-     return pi; 
-}
-
-
-
